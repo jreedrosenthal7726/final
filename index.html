@@ -8,6 +8,7 @@
   <!-- tailwind styling and mobile adjustments -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
+  <!-- firebase UI -->
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
 </head>
 
@@ -28,6 +29,21 @@
     firebase.initializeApp(firebaseConfig);
   </script>
   <script src="index.js"></script>
+
+
+  // Initializes FirebaseUI Auth
+  let ui = new firebaseui.auth.AuthUI(firebase.auth())
+
+  // FirebaseUI configuration
+  let authUIConfig = {
+    signInOptions: [
+      firebase.auth.EmailAuthProvider.PROVIDER_ID
+    ],
+    signInSuccessUrl: 'todo.html'
+  }
+
+  // Starts FirebaseUI Auth
+  ui.start('.firebaseui-auth-container', authUIConfig)
 
   <!-- Main landing page for sign ins -->
   <h1 class="text-center m-8 capitalize font-bold text-6xl text-green-500">MyCloset</h1>
