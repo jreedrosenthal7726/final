@@ -24,26 +24,23 @@
 
   <script>
     // Your web app's Firebase configuration
-    var firebaseConfig = {} // replace
+    var firebaseConfig = {
+
+    apiKey: "AIzaSyDlDuIoQu2gOdSJ9g8FkiefxNQdrzRzszs",
+    authDomain: "kiei-451-954b2.firebaseapp.com",
+    projectId: "kiei-451-954b2",
+    storageBucket: "kiei-451-954b2.appspot.com",
+    messagingSenderId: "331089885613",
+    appId: "1:331089885613:web:52bbe00e052048c04cc924"
+
+    } // replace
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
   </script>
   <script src="index.js"></script>
 
 
-  // Initializes FirebaseUI Auth
-  let ui = new firebaseui.auth.AuthUI(firebase.auth())
-
-  // FirebaseUI configuration
-  let authUIConfig = {
-    signInOptions: [
-      firebase.auth.EmailAuthProvider.PROVIDER_ID
-    ],
-    signInSuccessUrl: 'todo.html'
-  }
-
-  // Starts FirebaseUI Auth
-  ui.start('.firebaseui-auth-container', authUIConfig)
+ 
 
   <!-- Main landing page for sign ins -->
   <h1 class="text-center m-8 capitalize font-bold text-6xl text-green-500">MyCloset</h1>
@@ -56,7 +53,7 @@
   <div></div>
   <div></div>
   <div></div>
-  <h1 class="text-center m-8 capitalize">placeholder for sign in form and button</h1>
+  <h1 class="text-center m-8 capitalize firebaseui-auth-container"></h1>
 
 
   <!-- Link for Tutorial Page-->
