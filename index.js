@@ -15,6 +15,36 @@ firebase.auth().onAuthStateChanged(async function(user) {
       document.location.href = `index.html`
     })
 
+    //until we get the redirection authenitcation worked out I am going to  keep coding here and we can just copy this over
+    //get user id
+    let userId = user.uid
+    //get button to show items
+    let getItemsButton = document.querySelector(`#showItems`)
+    //create the url to get all items
+    let getItemsUrl = `/.netlify/functions/get_userItems?userId=${userId}`
+    //reference the items Div
+    let itemsDiv = document.querySelector(`.items`)
+    //console.log(getItemsUrl)
+    //event listener for click to get items
+    getItemsButton.addEventListener(`click`, async function(event){
+      //get user items
+      let userItemsResponse = await fetch(getItemsUrl)
+      let userItemsJson = await userItemsResponse.json()
+      console.log(userItemsJson.length)
+      //iterate through items and write to DOM
+      for (let i=0;i<userItemsJson.length; i++){
+        let item = userItemsJson[i].item
+        let buyDate = userItemsJson[i].buyDate
+        let purchasePrice = userItemsJson[i].purchasePrice
+        console.log(item)
+        itemsDiv.insertAdjacentHTML(`beforeend`,`
+          <div class="md:mt-16 mt-8"><span>${item}</span></div>
+          <div class="md:mt-16 mt-8"><span>${buyDate}</span></div>
+          <div class="md:mt-16 mt-8"><span>${purchasePrice}</span></div>
+        `)
+      }
+    })
+
   } else {
     // Signed out
     console.log('signed out')
