@@ -43,6 +43,7 @@
  
 
   <!-- Main landing page for sign ins -->
+  <div class="bg-fixed" style="background-image: url()"></div>
   <h1 class="text-center m-8 capitalize font-bold text-6xl text-green-500">MyCloset</h1>
   <div></div>
   <h2 class="text-center m-8 font-bold text-4xl">Unclutter your closet and see what it's worth!
@@ -56,13 +57,20 @@
   <h1 class="text-center m-8 capitalize firebaseui-auth-container"></h1>
 
 
+<div class="h-48 flex content-start">
+  <div class="md:w-2/5"></div>
+  <button id="showItems" class="bg-green-500 md:w-1/5 hover:bg-green-600 text-white px-3 py-3 rounded-xl">Click to Show Items</button>
+  <div class="md:w-2/5"></div>
+</div>
+
+  <div class="items"></div>
+
   <!-- Link for Tutorial Page-->
   <ul class="text-center m-8 capitalize font-bold text-3xl text-blue-500">
-    <li><a href="tutorial.html">See How it Works</a></li>
+    <li><a href="tutorial.html">Click Here to See How It Works</a></li>
   </ul>
 
-  <button id="showItems" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl">Show Items</button>
-  <div class="items"></div>
+
 </body>
 
 </html>
