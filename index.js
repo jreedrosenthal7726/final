@@ -41,6 +41,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       <div class="flex justify-center">
           <table class="border-4 border-black m-8 text-3xl text-black-500">
               <tr class="border-2">
+                <th></th>
                 <th>Item</th>
                 <th>Price</th>
                 <th>Date Purchased</th>
@@ -56,15 +57,17 @@ firebase.auth().onAuthStateChanged(async function(user) {
       let totalValue = 0
       //iterate through items and write to DOM in the "closet" <tr> from table above
       for (let i=0;i<userItemsJson.length; i++){
+        let itemId = userItemsJson[i].id
         let item = userItemsJson[i].item
         let buyDate = userItemsJson[i].buyDate
         let purchasePrice = userItemsJson[i].purchasePrice
         totalValue = totalValue + purchasePrice
-        console.log(item)
+        console.log(itemId)
         tableDiv.insertAdjacentHTML(`afterend`,`
         <div class="flex justify-center">
           <table class="border-4 border-black m-8 text-3xl text-black-500">
             <tr class="border-2">
+                <td class="border-2"><input type="checkbox" id="selectItemCheckBox-${itemId}">
                 <td class="border-2">${item}</td>
                 <td class="border-2">$${purchasePrice}</td>
                 <td class="border-2">${buyDate}</td>
