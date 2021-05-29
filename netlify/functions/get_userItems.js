@@ -15,7 +15,7 @@ exports.handler = async function(event) {
   for (let i = 0; i<items.length;i++){
     //get data from indexed item
     let itemData = items[i].data()
-    let itemId = itemData.id
+    let itemId = items[i].id
     let dateTemp = new Date(itemData.buyDate.seconds * 1000)
     let dateString = dateTemp.toDateString()
     //console.log(dateTemp)
