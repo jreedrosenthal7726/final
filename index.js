@@ -1,4 +1,5 @@
 firebase.auth().onAuthStateChanged(async function(user) {
+  //Code to make a sign out button that signs out user clears items
   if (user) {
     // Signed in
     console.log('signed in')
@@ -15,7 +16,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       document.location.href = `index.html`
     })
 
-    //until we get the redirection authenitcation worked out I am going to  keep coding here and we can just copy this over
+    //until we get the redirection authenitcation worked out I am going to keep coding here and we can just copy this over
     //get user id
     let userId = user.uid
     //get button to show items
@@ -25,25 +26,62 @@ firebase.auth().onAuthStateChanged(async function(user) {
     //reference the items Div
     let itemsDiv = document.querySelector(`.items`)
     //console.log(getItemsUrl)
+
     //event listener for click to get items
     getItemsButton.addEventListener(`click`, async function(event){
-      //get user items
+      
+      //get user items from db
       let userItemsResponse = await fetch(getItemsUrl)
       let userItemsJson = await userItemsResponse.json()
+      //log length of user items list to console
       console.log(userItemsJson.length)
-      //iterate through items and write to DOM
+
+      //add the heading for the "closet contents table" to the items div, include a class in the table for later reference called "closet"
+      itemsDiv.insertAdjacentHTML(`beforeend`,`
+      <div class="flex justify-center">
+          <table class="border-4 border-black m-8 text-3xl text-black-500">
+              <tr class="border-2">
+                <th>Item</th>
+                <th>Price</th>
+                <th>Date Purchased</th>
+              </tr>
+              <tr class="border-2 border-black m-8 text-3xl text-black-500 closet">
+              </tr>
+          </table>
+        </div>  
+      `)
+      //grab reference to the table row in the items table to add db items to in the next loop step
+      let tableDiv = document.querySelector(`.closet`)
+      //Define variable for total value of closet
+      let totalValue = 0
+      //iterate through items and write to DOM in the "closet" <tr> from table above
       for (let i=0;i<userItemsJson.length; i++){
         let item = userItemsJson[i].item
         let buyDate = userItemsJson[i].buyDate
         let purchasePrice = userItemsJson[i].purchasePrice
+        totalValue = totalValue + purchasePrice
         console.log(item)
-        itemsDiv.insertAdjacentHTML(`beforeend`,`
-          <div class="md:mt-16 mt-8"><span>${item}</span></div>
-          <div class="md:mt-16 mt-8"><span>${buyDate}</span></div>
-          <div class="md:mt-16 mt-8"><span>${purchasePrice}</span></div>
+        tableDiv.insertAdjacentHTML(`afterend`,`
+        <div class="flex justify-center">
+          <table class="border-4 border-black m-8 text-3xl text-black-500">
+            <tr class="border-2">
+                <td class="border-2">${item}</td>
+                <td class="border-2">$${purchasePrice}</td>
+                <td class="border-2">${buyDate}</td>
+            </tr>
+          </table>
+        </div>  
         `)
       }
+    //Display total value of closet and total number of items in readable text after items div
+    itemsDiv.insertAdjacentHTML(`afterend`,`
+    <div>
+      You have ${userItemsJson.length} items in your closet. In total, your closet is worth $${totalValue}.
+    </div>
+    `)
+
     })
+   
 
   } else {
     // Signed out
