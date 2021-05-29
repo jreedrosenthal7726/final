@@ -78,7 +78,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       }
     //Display total value of closet and total number of items in readable text after items div
     itemsDiv.insertAdjacentHTML(`afterend`,`
-    <div>
+    <div class="flex justify-center font-bold text-4xl">
       You have ${userItemsJson.length} items in your closet. In total, your closet is worth $${totalValue}.
     </div>
     `)
