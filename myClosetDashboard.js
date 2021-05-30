@@ -100,8 +100,10 @@ firebase.auth().onAuthStateChanged(async function(user) {
     let deleteButton = document.querySelector(`#deleteButton`)
     deleteButton.addEventListener(`click`, async function(event){
       event.preventDefault()
+      //gets all checkboxes on the form
       let checkBoxes = document.querySelectorAll(`.selectItemCheckBox`)
       let checkedBoxes = []
+      //iterate through checkboxes to see if they are cheched and if so add them to an array
       for (let chb=0;chb<checkBoxes.length;chb++){
         checkBox = checkBoxes[chb]
         if (checkBox.checked){
@@ -109,8 +111,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
           //console.log(checkBox) 
         }
       }
+      //stringify the array to pass through URL
       let CheckedBoxesString = checkedBoxes.toString()
-      console.log(CheckedBoxesString)
+      //console.log(CheckedBoxesString)
       let deleteItemsUrl = `/.netlify/functions/removeItem?itemIds=${CheckedBoxesString}`
       await fetch(deleteItemsUrl)
       // refresh the page
