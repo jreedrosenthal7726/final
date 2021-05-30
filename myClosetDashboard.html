@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
+    <title>MyCloset Dashboard</title>
+</head>
+<body>  
+    <div class="sign-in-or-sign-out"></div>
+ 
+    <!-- Put the Firebase config here -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <!-- Firebase Auth -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+
+        apiKey: "AIzaSyDlDuIoQu2gOdSJ9g8FkiefxNQdrzRzszs",
+        authDomain: "kiei-451-954b2.firebaseapp.com",
+        projectId: "kiei-451-954b2",
+        storageBucket: "kiei-451-954b2.appspot.com",
+        messagingSenderId: "331089885613",
+        appId: "1:331089885613:web:52bbe00e052048c04cc924"
+
+        } // replace
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="myClosetDashboard.js"></script>
+    <!-- Main landing page for sign ins -->
+    <h1 class="text-center m-8 capitalize font-bold text-6xl text-green-500">MyCloset</h1>
+    <div></div>
+    <h2 class="itemSummary text-center m-8 font-bold text-4xl"></h2>
+  
+    <!-- Put the Firebase config here -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <!-- Firebase Auth -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
+    <!--Create row of buttons with options to look at closet, add items and delete items-->
+
+    <!-- Button that shows the items for the logged in user, centered below title -->
+    <!-- <div class="space-x-4 h-35 flex justify-center content-start">
+        <div class=" md:w-1/8"></div>
+        <button id="showItems" class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Open My Closet</button>
+        <div class="md:w-1/8"></div> -->
+  
+        <!-- Button that allows users to add new item to closet-->
+        <!-- <div class="md:w-1/8"></div>
+        <button id="addItems" class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Add to Closet</button>
+        <div class="md:w-1/8"></div>
+    </div> -->
+  
+    <!-- testing out a way to add items to the db using a form based off of week 9 lab -->
+
+    <div class="flex flex-row">
+        <div class="addItem mx-8">
+            <form class="mt-4">
+                <div class="border-4">
+                    <div>
+                        <input type="text" id="addItem" class="mr-2 rounded-lg border px-3 py-2" placeholder="Item">
+                    </div>
+                    <div>
+                        <input type="text" id="buyDate" class="mr-2 rounded-lg border px-3 py-2" placeholder="Date Purchased">
+                    </div>
+                    <div>
+                        <input type="text" id="purchasePrice" class="mr-2 rounded-lg border px-3 py-2" placeholder="Purchase Price">
+                    </div>
+                </div>
+                <button id="addItemButton" class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Add</button>
+            </form>
+        </div>
+        <div class="flex justify-center">
+            <table class="border-4 border-black m-8 text-3xl text-black-500">
+                <tr class="border-2">
+                    <form>
+                        <div class="items">
+                        <button id="deleteButton"class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Delete</button>
+                    </form>
+                </tr>
+            </table>
+        </div>  
+        </div>
+    </div>
+    <div class="sign-in-or-sign-out"></div>
+    <div class="whoAmI"></div>
+
+</body>
+</html>

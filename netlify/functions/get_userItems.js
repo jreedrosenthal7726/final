@@ -10,7 +10,7 @@ exports.handler = async function(event) {
   let itemsQuery = await db.collection("myClosetItems").where("userId", "==", userId).get()
   //retreive the documents from the query
   let items = itemsQuery.docs
-  console.log(items)
+  //console.log(items)
 
   for (let i = 0; i<items.length;i++){
     //get data from indexed item
