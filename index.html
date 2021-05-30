@@ -89,12 +89,15 @@
 
 <!-- Form to forward an address search for a donation drop off location nearby -->
     <form class="text-center" action="https://www.google.com/maps">
-        <label class="block mt-4 font-bold text-green-500" for="q">Finally clearing out the closet? Enter your location here so we can help find a place to drop off donations!</label>
+        <label class="block mt-4 font-bold text-green-500" for="q">Finally clearing out the closet? Enter your zip below so we can help find a place to drop off donations!</label>
         <input class="p-2 w-64 border border-gray-400 rounded focus:outline-none focus:ring-green-500
-        focus:border-green-500" type="text" id="q" name="q">
-        <input type="hidden" name="near" value="donation centers">
+        focus:border-green-500" type="text" id="q" name="q" value="Donation Centers near [Zip]">
         <button class="rounded bg-green-500">Search</button>
     </form>
+
+
+
+
 </body>
 
 </html>
