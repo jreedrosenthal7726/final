@@ -85,6 +85,30 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     })
    
+// //working on a way to add items here
+
+// //get reference to button to add items, currently a temp new one at the bottom of the page, not the main one
+// let addItemsButton = document.querySelector(`#addItemButton`)
+// //event listener for click to get items
+// addItemsButton.addEventListener(`click`, async function(event){
+// // get a reference to the newly created item field inputs
+// let itemInput = document.querySelector(`#addItem`)
+// let priceInput = document.querySelector(`#purchasePrice`)
+// let buyDateInput = document.querySelector(`#buyDate`)
+// // get the input from the fields
+// let itemBody = itemInput.value
+// let priceBody = priceInput.value
+// let buyDateBody = buyDateInput.value
+// // Build the URL for our posts API
+// let url = `/.netlify/functions/addItem?userId=${userId}&item=${itemBody}&purchasePrice=${priceBody}&buyDate=${buyDateBody}`
+// // Fetch the url, wait for a response, store the response in memory
+// let response = await fetch(url)
+// // refresh the page
+// location.reload()
+
+// })
+
+
     // testing out a custom form to fancy up the google maps search, might delete later
       // let form = document.createElement('form');
       // form.action = 'https://www.google.com/maps';
@@ -96,6 +120,10 @@ firebase.auth().onAuthStateChanged(async function(user) {
       // document.body.append(form);
 
       // form.submit();
+
+
+
+
 
   } else {
     // Signed out
