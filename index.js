@@ -1,5 +1,5 @@
 firebase.auth().onAuthStateChanged(async function(user) {
-  //Code to make a sign out button that signs out user clears items
+  //Code to make a sign out button that signs out user and clears items
   if (user) {
     // Signed in
     console.log('signed in')
@@ -15,6 +15,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       //redirect use to home page
       document.location.href = `index.html`
     })
+
     // //testing out a custom form to fancy up the google maps search, might delete later
     //   let form = document.createElement('form');
     //   form.action = 'https://www.google.com/maps';
@@ -26,6 +27,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
     //   document.body.append(form);
 
     //   form.submit();
+
+    
   } else {
     // Signed out
     console.log('signed out')
