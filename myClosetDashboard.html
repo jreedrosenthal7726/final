@@ -35,8 +35,7 @@
     <!-- Main landing page for sign ins -->
     <h1 class="text-center m-8 capitalize font-bold text-6xl text-green-500">MyCloset</h1>
     <div></div>
-    <h2 class="itemSummary text-center m-8 font-bold text-4xl"></h2>
-  
+
     <!-- Put the Firebase config here -->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
@@ -58,38 +57,45 @@
     </div> -->
   
     <!-- testing out a way to add items to the db using a form based off of week 9 lab -->
-
-    <div class="flex flex-row">
-        <div class="addItem mx-8">
-            <form class="mt-4">
-                <div class="border-4">
-                    <div>
-                        <input type="text" id="addItem" class="mr-2 rounded-lg border px-3 py-2" placeholder="Item">
-                    </div>
-                    <div>
-                        <input type="text" id="buyDate" class="mr-2 rounded-lg border px-3 py-2" placeholder="Date Purchased">
-                    </div>
-                    <div>
-                        <input type="text" id="purchasePrice" class="mr-2 rounded-lg border px-3 py-2" placeholder="Purchase Price">
-                    </div>
-                </div>
-                <button id="addItemButton" class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Add</button>
-            </form>
-        </div>
-        <div class="flex justify-center">
+    <div>
+    <div class="flex">
             <table class="border-4 border-black m-8 text-3xl text-black-500">
-                <tr class="border-2">
-                    <form>
-                        <div class="items">
-                        <button id="deleteButton"class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Delete</button>
-                    </form>
-                </tr>
             </table>
-        </div>  
+        </div>
+        <div class="items"></div>
+    </div>
+    <div>
+        <form>
+            <button id="deleteButton"class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Delete</button>
+        </form>
+    </div>
+    <div>
+    <form class="w-1/5 flex m-auto space-x-5">
+        <div class="border-4">
+            <div>
+                <input type="text" id="addItem" class="mr-2 rounded-lg border w-full" placeholder="Item">
+            </div>
+            <div>
+                <input type="text" id="buyDate" class="mr-2 rounded-lg border w-full" placeholder="Date Purchased">
+            </div>
+            <div>
+                <input type="text" id="purchasePrice" class="mr-2 rounded-lg border w-full" placeholder="Purchase Price">
+            </div>
+        </div>
+        <div class = "w-1/2 m-auto">
+        <button id="addItemButton" class="bg-green-500 hover:bg-green-600 text-white rounded-xl font-bold w-full m-auto">Add</button>
         </div>
     </div>
+    </form>
+    <div class="zip">
+    </body>
+
+    <div>
+        <h2 class="itemSummary text-center m-8 font-bold text-4xl"></h2>
+        </div>
     <div class="sign-in-or-sign-out"></div>
     <div class="whoAmI"></div>
-
+    </div>
+    </div>>
 </body>
 </html>

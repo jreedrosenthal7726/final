@@ -50,6 +50,20 @@ firebase.auth().onAuthStateChanged(async function(user) {
           </table>
         </div>  
       `)
+
+    //Add zipcode search to the bottom
+      let zipSearch = document.querySelector(`.zip`)
+      zipSearch.insertAdjacentHTML(`beforeend`,`
+        <div>
+        <form class="text-center" action="https://www.google.com/maps">
+        <label class="block mt-4 font-bold text-green-500" for="q">Enter your zip below so we can help find a place to drop off donations!</label>
+       <input class="p-2 w-64 border border-gray-400 text-center rounded text-grey-400 focus:outline-none focus:ring-green-500
+       focus:border-green-500" type="text" id="q" name="q" value="Enter Zip">
+       <button class="rounded bg-green-500">Search</button>
+       </form>
+       </div>
+      `)
+
       //grab reference to the table row in the items table to add db items to in the next loop step
       let tableDiv = document.querySelector(`.closet`)
       //Define variable for total value of closet
@@ -111,6 +125,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
           //console.log(checkBox) 
         }
       }
+
+
       //stringify the array to pass through URL
       let CheckedBoxesString = checkedBoxes.toString()
       //console.log(CheckedBoxesString)
