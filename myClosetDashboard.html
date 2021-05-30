@@ -32,7 +32,8 @@
         firebase.initializeApp(firebaseConfig);
     </script>
     <script src="myClosetDashboard.js"></script>
-    <!-- Main landing page for sign ins -->
+    
+    <!-- Main landing page after signing in -->
     <h1 class="text-center m-8 capitalize font-bold text-6xl text-green-500">MyCloset</h1>
     <div></div>
 
@@ -42,21 +43,11 @@
     <!-- Firebase Auth -->
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
-    <!--Create row of buttons with options to look at closet, add items and delete items-->
+   
 
-    <!-- Button that shows the items for the logged in user, centered below title -->
-    <!-- <div class="space-x-4 h-35 flex justify-center content-start">
-        <div class=" md:w-1/8"></div>
-        <button id="showItems" class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Open My Closet</button>
-        <div class="md:w-1/8"></div> -->
+    <!-- Provide the framework for the dashboard by making dives with classes/id to be referenced by the js file -->
   
-        <!-- Button that allows users to add new item to closet-->
-        <!-- <div class="md:w-1/8"></div>
-        <button id="addItems" class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Add to Closet</button>
-        <div class="md:w-1/8"></div>
-    </div> -->
-  
-    <!-- testing out a way to add items to the db using a form based off of week 9 lab -->
+    <!-- Create a div for the item/closet table to be filled with the items from the db -->
     <div>
     <div class="flex">
             <table class="border-4 border-black m-8 text-3xl text-black-500">
@@ -64,11 +55,13 @@
         </div>
         <div class="items"></div>
     </div>
+    <!-- create the delete button that will delete any items currently checked -->
     <div>
         <form>
             <button id="deleteButton"class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Delete</button>
         </form>
     </div>
+    <!-- create the form and button to add new items to the closet, including a name, price, and buy date -->
     <div>
     <form class="w-1/5 flex m-auto space-x-5">
         <div class="border-4">
@@ -86,10 +79,12 @@
         <button id="addItemButton" class="bg-green-500 hover:bg-green-600 text-white rounded-xl font-bold w-full m-auto">Add</button>
         </div>
     </div>
+    <!-- create the form to search for donation centers near the users zip code -->
     </form>
     <div class="zip">
     </body>
 
+    <!-- create the div for the summary of items and value in the closet -->
     <div>
         <h2 class="itemSummary text-center m-8 font-bold text-4xl"></h2>
         </div>

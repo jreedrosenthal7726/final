@@ -1,21 +1,21 @@
 firebase.auth().onAuthStateChanged(async function(user) {
-  //Code to make a sign out button that signs out user clears items
+  //Code to make a sign out button that signs out user and clears items
   if (user) {
     // Signed in
     console.log('signed in')
     document.querySelector(`.sign-in-or-sign-out`).innerHTML = `
     <button class="text-pink-500 underline sign-out">Sign Out</button>
     `
-    //refer to signout button
+    //reference to signout button
     let signOutButton = document.querySelector(`.sign-out`)
     //handle click event to sign out
     signOutButton.addEventListener(`click`, function(event){
       //sign out user
       firebase.auth().signOut()
-      //redirect use to home page
+      //redirect use to home page/sign-in
       document.location.href = `index.html`
     })
-    //until we get the redirection authenitcation worked out I am going to keep coding here and we can just copy this over
+    
     //get user id
     let userId = user.uid
     //get button to show items
@@ -51,14 +51,14 @@ firebase.auth().onAuthStateChanged(async function(user) {
         </div>  
       `)
 
-    //Add zipcode search to the bottom
+    //Add zipcode search to the bottom of the page
       let zipSearch = document.querySelector(`.zip`)
       zipSearch.insertAdjacentHTML(`beforeend`,`
         <div>
         <form class="text-center" action="https://www.google.com/maps">
         <label class="block mt-4 font-bold text-green-500" for="q">Enter your zip below so we can help find a place to drop off donations!</label>
        <input class="p-2 w-64 border border-gray-400 text-center rounded text-grey-400 focus:outline-none focus:ring-green-500
-       focus:border-green-500" type="text" id="q" name="q" value="Enter Zip">
+       focus:border-green-500" type="text" id="q" name="q" value="Donation Centers near [Zip]">
        <button class="rounded bg-green-500">Search</button>
        </form>
        </div>
@@ -91,7 +91,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
     </div>
     `)
 
-    //get reference to button to add items, currently a temp new one at the bottom of the page, not the main one
+    //get reference to button to add items
     let addItemsButton = document.querySelector(`#addItemButton`)
     //event listener for click to get items
     addItemsButton.addEventListener(`click`, async function(event){
@@ -111,25 +111,28 @@ firebase.auth().onAuthStateChanged(async function(user) {
       location.reload()
     })
 
+    //get a reference to the delete button
     let deleteButton = document.querySelector(`#deleteButton`)
     deleteButton.addEventListener(`click`, async function(event){
       event.preventDefault()
-      //gets all checkboxes on the form
+      //gets all checked checkboxes on the forms in the closet table
       let checkBoxes = document.querySelectorAll(`.selectItemCheckBox`)
       let checkedBoxes = []
-      //iterate through checkboxes to see if they are cheched and if so add them to an array
+      //iterate through checkboxes to see if they are cheched and if so, add them to an array
       for (let chb=0;chb<checkBoxes.length;chb++){
         checkBox = checkBoxes[chb]
         if (checkBox.checked){
           checkedBoxes.push(checkBox.name)
-          //console.log(checkBox) 
+          console.log(checkBox) 
         }
       }
 
 
       //stringify the array to pass through URL
       let CheckedBoxesString = checkedBoxes.toString()
-      //console.log(CheckedBoxesString)
+      console.log(CheckedBoxesString)
+
+
       let deleteItemsUrl = `/.netlify/functions/removeItem?itemIds=${CheckedBoxesString}`
       await fetch(deleteItemsUrl)
       // refresh the page
