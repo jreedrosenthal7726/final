@@ -112,9 +112,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
           console.log(checkBox) 
         }
       }
-      //Alert for deleted items value
-      //alert(`Nice job, you made some space! The items you're getting rid of are worth ${checkBoxValue}.`);
-
+      
       //stringify the array to pass through URL
       let CheckedBoxesString = checkedBoxes.toString()
       console.log(CheckedBoxesString)
