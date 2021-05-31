@@ -35,46 +35,46 @@
     <div class="MainContainer container md:mx-auto py-8">
         <div class="sign-in-or-sign-out "></div>
 
-        <!-- Main landing page after signing in -->
+        <!-- Main landing page after signing in and div for summary of items after js runs -->
         <div class="PageHeadings">
             <h1 class="text-center m-8 capitalize font-bold text-6xl text-green-500">MyCloset</h1>
             <h2 class="itemSummary text-center m-8 font-bold text-4xl"></h2>
         </div>
-        <!-- Provide the framework for the dashboard by making dives with classes/id to be referenced by the js file -->
+        <!-- Provide the framework for the dashboard by making divs with classes/id to be referenced by the .js file -->
 
         <!-- Create a div for the item/closet table to be filled with the items from the db -->
         <div class="MyClosetItems flex justify-center">
-            <div class="flex">
-                <table class="border-4 border-black m-8 text-3xl text-black-500">
-                </table>
-            </div>
-            <div class="items"></div>
-            <div class="DeleteItemsButton">
-                <form>
-                    <button id="deleteButton"class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Delete</button>
+            
+        <!-- create the form and button to add new items to the closet, including a name, price, and buy date -->
+            <div class="QuickAddForm">
+                <form class="flex m-auto mt-20">
+                    <div class="border-4">
+                        <div>
+                            <input type="text" id="addItem" class="mr-2 rounded-lg border w-full" placeholder="Item">
+                        </div>
+                        <div>
+                            <input type="text" id="buyDate" class="mr-2 rounded-lg border w-full" placeholder="Date Purchased">
+                        </div>
+                        <div>
+                            <input type="text" id="purchasePrice" class="mr-2 rounded-lg border w-full" placeholder="Purchase Price">
+                        </div>
+                    </div>
+                    <div class = "m-auto">
+                        <button id="addItemButton" class="px-8 py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl font-bold w-full m-auto">Add</button>
+                    </div>
                 </form>
             </div>
-        </div>
-            <!-- create the delete button that will delete any items currently checked -->
-            <!-- create the form and button to add new items to the closet, including a name, price, and buy date -->
-        <div class="QuickAddForm">
-            <form class="w-1/5 flex m-auto space-x-5">
-                <div class="border-4">
-                    <div>
-                        <input type="text" id="addItem" class="mr-2 rounded-lg border w-full" placeholder="Item">
-                    </div>
-                    <div>
-                        <input type="text" id="buyDate" class="mr-2 rounded-lg border w-full" placeholder="Date Purchased">
-                    </div>
-                    <div>
-                        <input type="text" id="purchasePrice" class="mr-2 rounded-lg border w-full" placeholder="Purchase Price">
-                    </div>
-                </div>
-                <div class = "w-1/2 m-auto">
-                    <button id="addItemButton" class="bg-green-500 hover:bg-green-600 text-white rounded-xl font-bold w-full m-auto">Add</button>
-                </div>
+
+        <!-- div for the items table itself to be populated -->
+            <div class="items"></div>
+
+        <!-- create the delete button that will delete any items currently checked -->
+            <form class="w-1/5 DeleteItemsButton">
+                <button id="deleteButton"class="m-12 mt-20 bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-xl font-bold">Delete</button>
             </form>
         </div>
+            
+
         <!-- create the form to search for donation centers near the users zip code -->
         <div class="zip">
             <form class="text-center" action="https://www.google.com/maps?" target="_blank">

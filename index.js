@@ -16,18 +16,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
       document.location.href = `index.html`
     })
 
-    // //testing out a custom form to fancy up the google maps search, might delete later
-    //   let form = document.createElement('form');
-    //   form.action = 'https://www.google.com/maps';
-    //   form.method = 'GET';
-
-    //   form.innerHTML = '<input name="q" value="+donation+centers">';
-
-    //   the form must be in the document to submit it
-    //   document.body.append(form);
-
-    //   form.submit();
-
     
   } else {
     // Signed out

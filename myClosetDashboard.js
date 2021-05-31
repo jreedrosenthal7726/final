@@ -50,19 +50,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
         </table>
       `)
 
-    //Add zipcode search to the bottom of the page
-      // let zipSearch = document.querySelector(`.zip`)
-      // zipSearch.insertAdjacentHTML(`beforeend`,`
-      //   <div>
-      //   <form class="text-center" action="https://www.google.com/maps">
-      //   <label class="block mt-4 font-bold text-green-500" for="q">Enter your zip below so we can help find a place to drop off donations!</label>
-      //  <input class="p-2 w-64 border border-gray-400 text-center rounded text-grey-400 focus:outline-none focus:ring-green-500
-      //  focus:border-green-500" type="text" id="q" name="q" value="Donation Centers near [Zip]">
-      //  <button class="rounded bg-green-500">Search</button>
-      //  </form>
-      //  </div>
-      // `)
-
       //grab reference to the table row in the items table to add db items to in the next loop step
       let tableDiv = document.querySelector(`.closet`)
       //Define variable for total value of closet
@@ -82,11 +69,11 @@ firebase.auth().onAuthStateChanged(async function(user) {
           <td class="border-2">${buyDate}</td>
         `)
       }
-    //Display total value of closet and total number of items in readable text after items div
+    //Display total value of closet and total number of items in readable text 
     let itemSummaryDiv = document.querySelector(`.itemSummary`)
     itemSummaryDiv.insertAdjacentHTML(`afterend`,`
     <div class="flex justify-center font-bold text-4xl">
-      You have ${userItemsJson.length} items in your closet. In total, your closet is worth $${totalValue}.
+      You have ${userItemsJson.length} items in your closet. In total, your closet is worth $${totalValue}. 
     </div>
     `)
 
@@ -117,7 +104,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       //gets all checked checkboxes on the forms in the closet table
       let checkBoxes = document.querySelectorAll(`.selectItemCheckBox`)
       let checkedBoxes = []
-      //iterate through checkboxes to see if they are cheched and if so, add them to an array
+      //iterate through checkboxes to see if they are checked and if so, add them to an array
       for (let chb=0;chb<checkBoxes.length;chb++){
         checkBox = checkBoxes[chb]
         if (checkBox.checked){
@@ -125,7 +112,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
           console.log(checkBox) 
         }
       }
-
+      //Alert for deleted items value
+      //alert(`Nice job, you made some space! The items you're getting rid of are worth ${checkBoxValue}.`);
 
       //stringify the array to pass through URL
       let CheckedBoxesString = checkedBoxes.toString()
