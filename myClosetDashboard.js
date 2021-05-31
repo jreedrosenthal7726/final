@@ -4,15 +4,16 @@ firebase.auth().onAuthStateChanged(async function(user) {
     // Signed in
     console.log('signed in')
     document.querySelector(`.sign-in-or-sign-out`).innerHTML = `
-    <button class="text-pink-500 underline sign-out">Sign Out</button>
+    <button class="sign-out bg-green-500 flex:md hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Sign Out</button><h1>Welcome ${user.providerData[0].email}</h1>
     `
     //reference to signout button
     let signOutButton = document.querySelector(`.sign-out`)
+    console.log(signOutButton)
     //handle click event to sign out
     signOutButton.addEventListener(`click`, function(event){
       //sign out user
       firebase.auth().signOut()
-      //redirect use to home page/sign-in
+      //redirect use to home page
       document.location.href = `index.html`
     })
     
@@ -37,32 +38,30 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
       //add the heading for the "closet contents table" to the items div, include a class in the table for later reference called "closet"
       itemsDiv.insertAdjacentHTML(`beforeend`,`
-      <div class="flex justify-center">
-          <table class="border-4 border-black m-8 text-3xl text-black-500">
-              <tr class="border-2">
-                <th></th>
-                <th>Item</th>
-                <th>Price</th>
-                <th>Date Purchased</th>
-              </tr>
-              <tr class="border-2 border-black m-8 text-3xl text-black-500 closet">
-              </tr>
-          </table>
-        </div>  
+        <table class="border-4 border-black m-8 text-3xl text-black-500">
+            <tr class="border-2">
+              <th></th>
+              <th>Item</th>
+              <th>Price</th>
+              <th>Date Purchased</th>
+            </tr>
+            <tr class="border-2 border-black m-8 text-3xl text-black-500 closet">
+            </tr>
+        </table>
       `)
 
     //Add zipcode search to the bottom of the page
-      let zipSearch = document.querySelector(`.zip`)
-      zipSearch.insertAdjacentHTML(`beforeend`,`
-        <div>
-        <form class="text-center" action="https://www.google.com/maps">
-        <label class="block mt-4 font-bold text-green-500" for="q">Enter your zip below so we can help find a place to drop off donations!</label>
-       <input class="p-2 w-64 border border-gray-400 text-center rounded text-grey-400 focus:outline-none focus:ring-green-500
-       focus:border-green-500" type="text" id="q" name="q" value="Donation Centers near [Zip]">
-       <button class="rounded bg-green-500">Search</button>
-       </form>
-       </div>
-      `)
+      // let zipSearch = document.querySelector(`.zip`)
+      // zipSearch.insertAdjacentHTML(`beforeend`,`
+      //   <div>
+      //   <form class="text-center" action="https://www.google.com/maps">
+      //   <label class="block mt-4 font-bold text-green-500" for="q">Enter your zip below so we can help find a place to drop off donations!</label>
+      //  <input class="p-2 w-64 border border-gray-400 text-center rounded text-grey-400 focus:outline-none focus:ring-green-500
+      //  focus:border-green-500" type="text" id="q" name="q" value="Donation Centers near [Zip]">
+      //  <button class="rounded bg-green-500">Search</button>
+      //  </form>
+      //  </div>
+      // `)
 
       //grab reference to the table row in the items table to add db items to in the next loop step
       let tableDiv = document.querySelector(`.closet`)
@@ -74,7 +73,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
         let item = userItemsJson[i].item
         let buyDate = userItemsJson[i].buyDate
         let purchasePrice = userItemsJson[i].purchasePrice
-        totalValue = totalValue + purchasePrice
+        totalValue += purchasePrice
         //console.log(itemId)
         tableDiv.insertAdjacentHTML(`afterend`,`
           <td class="border-2"><input type="checkbox" class="selectItemCheckBox" name="${itemId}">
@@ -144,17 +143,17 @@ firebase.auth().onAuthStateChanged(async function(user) {
     console.log('signed out')
 
     // Initializes FirebaseUI Auth
-    // let ui = new firebaseui.auth.AuthUI(firebase.auth())
+    let ui = new firebaseui.auth.AuthUI(firebase.auth())
 
-    // // FirebaseUI configuration
-    // let authUIConfig = {
-    //   signInOptions: [
-    //     firebase.auth.EmailAuthProvider.PROVIDER_ID
-    //   ],
-    //   signInSuccessUrl: 'myClosetDashboard.html'
-    // }
+    // FirebaseUI configuration
+    let authUIConfig = {
+      signInOptions: [
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+      ],
+      signInSuccessUrl: 'myClosetDashboard.html'
+    }
 
-    // Starts FirebaseUI Auth
+    //Starts FirebaseUI Auth
     ui.start('.sign-in-or-sign-out', authUIConfig)
   }
 })

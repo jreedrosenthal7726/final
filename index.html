@@ -13,80 +13,86 @@
 </head>
 
 <body>
-  <div class="sign-in-or-sign-out"></div>
- 
-  <!-- Put the Firebase config here -->
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
-  <!-- Firebase Auth -->
-  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
+  <div class="container md:mx-auto py-8">
 
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
+    <div class="sign-in-or-sign-out"></div>
+  
+    <!-- Put the Firebase config here -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <!-- Firebase Auth -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
 
-    apiKey: "AIzaSyDlDuIoQu2gOdSJ9g8FkiefxNQdrzRzszs",
-    authDomain: "kiei-451-954b2.firebaseapp.com",
-    projectId: "kiei-451-954b2",
-    storageBucket: "kiei-451-954b2.appspot.com",
-    messagingSenderId: "331089885613",
-    appId: "1:331089885613:web:52bbe00e052048c04cc924"
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
 
-    } // replace
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script>
-  <script src="index.js"></script>
+      apiKey: "AIzaSyDlDuIoQu2gOdSJ9g8FkiefxNQdrzRzszs",
+      authDomain: "kiei-451-954b2.firebaseapp.com",
+      projectId: "kiei-451-954b2",
+      storageBucket: "kiei-451-954b2.appspot.com",
+      messagingSenderId: "331089885613",
+      appId: "1:331089885613:web:52bbe00e052048c04cc924"
 
-
-  <!-- Main landing page for sign ins -->
-  <h1 class="text-center m-8 capitalize font-bold text-6xl text-green-500">MyCloset</h1>
-  <div></div>
-  <h2 class="text-center m-8 font-bold text-4xl">Unclutter your closet and see what it's worth!
-  </h2>
+      } // replace
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="index.js"></script>
 
 
-  <!-- Placeholder for log-in form and sign-in button-->
-  <div></div>
-  <div></div>
-  <div></div>
-  <h1 class="text-center m-8 capitalize firebaseui-auth-container"></h1>
-
-  <!-- Create row of buttons with options to look at closet, add items and delete items- COMMENTED OUT SINCE THIS HAPPENS ONCE LOGGED IN
-
-<!-- Button that shows the items for the logged in user, centered below title  -->
-<!-- <div class="space-x-4 h-35 flex justify-center content-start">
-  <div class=" md:w-1/8"></div>
-  <button id="showItems" class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Open My Closet</button>
-  <div class="md:w-1/8"></div> -->
-
-<!-- Button that allows users to add new item to closet-->
-  <!-- <div class="md:w-1/8"></div>
-  <button id="addItems" class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Add to Closet</button>
-  <div class="md:w-1/8"></div> -->
+    <!-- Main landing page for sign ins -->
+    <h1 class="text-center m-8 capitalize font-bold text-6xl text-green-500">MyCloset</h1>
+    <div></div>
+    <h2 class="text-center m-8 font-bold text-4xl">Unclutter your closet and see what it's worth!
+    </h2>
 
 
-<!-- Button that allows users to delete items-->
-<!-- <div class=" md:w-1/8 "></div>
-<button id="deleteItems" class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Delete Items</button>
-<div class="md:w-1/8"></div>  -->
+    <!-- Placeholder for log-in form and sign-in button-->
+    <div></div>
+    <div></div>
+    <div></div>
+    <h1 class="text-center m-8 capitalize firebaseui-auth-container"></h1>
 
-</div>
-<!-- Button that allows users to delete items in their closet-->
+    <!-- Create row of buttons with options to look at closet, add items and delete items- COMMENTED OUT SINCE THIS HAPPENS ONCE LOGGED IN
 
-  <!-- Link for Tutorial Page-->
-  <ul class="text-center m-8 capitalize font-bold text-3xl text-blue-500">
-    <li><a href="tutorial.html">Click Here to See How It Works</a></li>
-  </ul>
+  <!-- Button that shows the items for the logged in user, centered below title  -->
+  <!-- <div class="space-x-4 h-35 flex justify-center content-start">
+    <div class=" md:w-1/8"></div>
+    <button id="showItems" class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Open My Closet</button>
+    <div class="md:w-1/8"></div> -->
 
-<!-- Form to forward an address search for a donation drop off location nearby -->
-    <form class="text-center" action="https://www.google.com/maps">
-        <label class="block mt-4 font-bold text-green-500" for="q">Finally clearing out the closet? Enter your zip below so we can help find a place to drop off donations!</label>
-        <input class="p-2 w-64 border border-gray-400 rounded focus:outline-none focus:ring-green-500
-        focus:border-green-500" type="text" id="q" name="q" value="Donation Centers near [Zip]">
-        <button class="rounded bg-green-500">Search</button>
-    </form>
+  <!-- Button that allows users to add new item to closet-->
+    <!-- <div class="md:w-1/8"></div>
+    <button id="addItems" class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Add to Closet</button>
+    <div class="md:w-1/8"></div> -->
+
+
+  <!-- Button that allows users to delete items-->
+  <!-- <div class=" md:w-1/8 "></div>
+  <button id="deleteItems" class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Delete Items</button>
+  <div class="md:w-1/8"></div>  -->
+
+  </div>
+  <!-- Button that allows users to delete items in their closet-->
+
+    <!-- Link for Tutorial Page-->
+    <ul class="text-center m-8 capitalize font-bold text-3xl text-blue-500">
+      <li><a href="tutorial.html">Click Here to See How It Works</a></li>
+    </ul>
+
+  <!-- Form to forward an address search for a donation drop off location nearby -->
+        <!-- <div class="zip"> -->
+        <div class="zip">
+          <form class="text-center" action="https://www.google.com/maps?" target="_blank">
+          <!-- <label class="block mt-4 font-bold text-green-500" for="q">Enter your zip below so we can help find a place to drop off donations!</label> -->
+          <input class="p-2 w-64 border border-gray-400 text-center rounded text-grey-400 focus:outline-none focus:ring-green-500
+          focus:border-green-500" type="hidden" id="q" name="q" value="Donation Centers">
+          <button class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold" value="Donation Centers">Find Donations Centers Near Me</button>
+          </form>
+      </div>
+  </div>
 </body>
 
 </html>

@@ -8,89 +8,85 @@
     <title>MyCloset Dashboard</title>
 </head>
 <body>  
-    <div class="sign-in-or-sign-out"></div>
- 
-    <!-- Put the Firebase config here -->
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
-    <!-- Firebase Auth -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
+    <div class="scripts">
+        <!-- Put the Firebase config here -->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+        <!-- Firebase Auth -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
 
-        apiKey: "AIzaSyDlDuIoQu2gOdSJ9g8FkiefxNQdrzRzszs",
-        authDomain: "kiei-451-954b2.firebaseapp.com",
-        projectId: "kiei-451-954b2",
-        storageBucket: "kiei-451-954b2.appspot.com",
-        messagingSenderId: "331089885613",
-        appId: "1:331089885613:web:52bbe00e052048c04cc924"
+            apiKey: "AIzaSyDlDuIoQu2gOdSJ9g8FkiefxNQdrzRzszs",
+            authDomain: "kiei-451-954b2.firebaseapp.com",
+            projectId: "kiei-451-954b2",
+            storageBucket: "kiei-451-954b2.appspot.com",
+            messagingSenderId: "331089885613",
+            appId: "1:331089885613:web:52bbe00e052048c04cc924"
 
-        } // replace
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-    </script>
-    <script src="myClosetDashboard.js"></script>
-    
-    <!-- Main landing page after signing in -->
-    <h1 class="text-center m-8 capitalize font-bold text-6xl text-green-500">MyCloset</h1>
-    <div></div>
+            } // replace
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
+        <script src="myClosetDashboard.js"></script>
+    </div>
+    <div class="MainContainer container md:mx-auto py-8">
+        <div class="sign-in-or-sign-out "></div>
 
-    <!-- Put the Firebase config here -->
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
-    <!-- Firebase Auth -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
-   
-
-    <!-- Provide the framework for the dashboard by making dives with classes/id to be referenced by the js file -->
-  
-    <!-- Create a div for the item/closet table to be filled with the items from the db -->
-    <div>
-    <div class="flex">
-            <table class="border-4 border-black m-8 text-3xl text-black-500">
-            </table>
+        <!-- Main landing page after signing in -->
+        <div class="PageHeadings">
+            <h1 class="text-center m-8 capitalize font-bold text-6xl text-green-500">MyCloset</h1>
+            <h2 class="itemSummary text-center m-8 font-bold text-4xl"></h2>
         </div>
-        <div class="items"></div>
-    </div>
-    <!-- create the delete button that will delete any items currently checked -->
-    <div>
-        <form>
-            <button id="deleteButton"class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Delete</button>
-        </form>
-    </div>
-    <!-- create the form and button to add new items to the closet, including a name, price, and buy date -->
-    <div>
-    <form class="w-1/5 flex m-auto space-x-5">
-        <div class="border-4">
-            <div>
-                <input type="text" id="addItem" class="mr-2 rounded-lg border w-full" placeholder="Item">
+        <!-- Provide the framework for the dashboard by making dives with classes/id to be referenced by the js file -->
+
+        <!-- Create a div for the item/closet table to be filled with the items from the db -->
+        <div class="MyClosetItems flex justify-center">
+            <div class="flex">
+                <table class="border-4 border-black m-8 text-3xl text-black-500">
+                </table>
             </div>
-            <div>
-                <input type="text" id="buyDate" class="mr-2 rounded-lg border w-full" placeholder="Date Purchased">
-            </div>
-            <div>
-                <input type="text" id="purchasePrice" class="mr-2 rounded-lg border w-full" placeholder="Purchase Price">
+            <div class="items"></div>
+            <div class="DeleteItemsButton">
+                <form>
+                    <button id="deleteButton"class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Delete</button>
+                </form>
             </div>
         </div>
-        <div class = "w-1/2 m-auto">
-        <button id="addItemButton" class="bg-green-500 hover:bg-green-600 text-white rounded-xl font-bold w-full m-auto">Add</button>
+            <!-- create the delete button that will delete any items currently checked -->
+            <!-- create the form and button to add new items to the closet, including a name, price, and buy date -->
+        <div class="QuickAddForm">
+            <form class="w-1/5 flex m-auto space-x-5">
+                <div class="border-4">
+                    <div>
+                        <input type="text" id="addItem" class="mr-2 rounded-lg border w-full" placeholder="Item">
+                    </div>
+                    <div>
+                        <input type="text" id="buyDate" class="mr-2 rounded-lg border w-full" placeholder="Date Purchased">
+                    </div>
+                    <div>
+                        <input type="text" id="purchasePrice" class="mr-2 rounded-lg border w-full" placeholder="Purchase Price">
+                    </div>
+                </div>
+                <div class = "w-1/2 m-auto">
+                    <button id="addItemButton" class="bg-green-500 hover:bg-green-600 text-white rounded-xl font-bold w-full m-auto">Add</button>
+                </div>
+            </form>
         </div>
-    </div>
-    <!-- create the form to search for donation centers near the users zip code -->
-    </form>
-    <div class="zip">
-    </body>
+        <!-- create the form to search for donation centers near the users zip code -->
+        <div class="zip">
+            <form class="text-center" action="https://www.google.com/maps?" target="_blank">
+                <!-- <label class="block mt-4 font-bold text-green-500" for="q">Enter your zip below so we can help find a place to drop off donations!</label> -->
+                <input class="p-2 w-64 border border-gray-400 text-center rounded text-grey-400 focus:outline-none focus:ring-green-500
+                focus:border-green-500" type="hidden" id="q" name="q" value="Donation Centers">
+                <button class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold" value="Donation Centers">Find Donations Centers Near Me</button>
+            </form>
+        </div>
 
-    <!-- create the div for the summary of items and value in the closet -->
-    <div>
-        <h2 class="itemSummary text-center m-8 font-bold text-4xl"></h2>
-        </div>
-    <div class="sign-in-or-sign-out"></div>
-    <div class="whoAmI"></div>
+        <!-- create the div for the summary of items and value in the closet -->
+        <div class="sign-in-or-sign-out justify-end"></div>
     </div>
-    </div>>
 </body>
 </html>
