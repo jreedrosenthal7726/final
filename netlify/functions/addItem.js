@@ -11,6 +11,7 @@ exports.handler = async function(event) {
   let item = event.queryStringParameters.item
   let buyDate = event.queryStringParameters.buyDate
   let purchasePrice = event.queryStringParameters.purchasePrice
+  let collection = event.queryStringParameters.collection
 
   if (typeof purchasePrice != 'number') {
     console.log(`NaN Converting`)
@@ -18,19 +19,32 @@ exports.handler = async function(event) {
     purchasePrice = Number(purchasePrice.replace(/[^0-9.-]+/g,""))
   }
   //convert string date to date type
-  buyDate = new Date(buyDate)
   
   // establish a connection to firebase in memory
   let db = firebase.firestore()
 
   // add a new item to the closet in the firebase db, wait for it to return
-  await db.collection('myClosetItems').add({
-    userId: userId,
-    item: item,
-    purchasePrice: purchasePrice,
-    buyDate: buyDate
-  })
-
+  if (collection == 'myClosetSalvagedItems') {
+    let salvageDate = new Date()
+    buyDate = new Date(buyDate * 1000)
+    console.log(buyDate)
+    await db.collection(collection).add({
+      userId: userId,
+      item: item,
+      purchasePrice: purchasePrice,
+      buyDate: buyDate,
+      salvageDate: salvageDate
+    })
+  } else {
+    buyDate = new Date(buyDate)
+    console.log(buyDate)
+    await db.collection(collection).add({
+      userId: userId,
+      item: item,
+      purchasePrice: purchasePrice,
+      buyDate: buyDate
+    })
+  }
   return {
     statusCode: 200}
   }

@@ -16,13 +16,16 @@ firebase.auth().onAuthStateChanged(async function(user) {
       //redirect use to home page
       document.location.href = `index.html`
     })
-    
+    let getUrl = window.location   
+    let baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[0];
+    console.log(baseUrl)
+
     //get user id
     let userId = user.uid
     //get button to show items
-    let getItemsButton = document.querySelector(`#showItems`)
+    // let getItemsButton = document.querySelector(`#showItems`)
     //create the url to get all items
-    let getItemsUrl = `/.netlify/functions/get_userItems?userId=${userId}`
+    let getItemsUrl = `/.netlify/functions/get_userItems?userId=${userId}&status=currentItems`
     //reference the items Div
     let itemsDiv = document.querySelector(`.items`)
     //console.log(getItemsUrl)
@@ -69,7 +72,55 @@ firebase.auth().onAuthStateChanged(async function(user) {
           <td class="border-2">${buyDate}</td>
         `)
       }
-    //Display total value of closet and total number of items in readable text 
+
+
+
+
+
+      let getsalvagedItemsUrl = `/.netlify/functions/get_userItems?userId=${userId}&status=salvagedItems`
+      //reference the items Div
+      let salvagedItemsDiv = document.querySelector(`.salvagedItems`)
+      //console.log(getItemsUrl)
+  
+      //event listener for click to get items
+      // getItemsButton.addEventListener(`click`, async function(event){
+        
+        //get user items from db
+        let usergetsalvagedItemsUrlResponse = await fetch(getsalvagedItemsUrl)
+        let usergetsalvagedItemsUrlJson = await usergetsalvagedItemsUrlResponse.json()
+  
+        salvagedItemsDiv.insertAdjacentHTML(`beforeend`,`
+        <table class="border-4 border-black m-8 text-3xl text-black-500">
+            <tr class="border-2">
+              <th>Item</th>
+              <th>Price</th>
+              <th>Date Purchased</th>
+              <th>Date Salvaged</th>
+            </tr>
+            <tr class="border-2 border-black m-8 text-3xl text-black-500 salvaged">
+            </tr>
+        </table>
+      `)
+
+      //grab reference to the table row in the items table to add db items to in the next loop step
+      let salvagedTableDiv = document.querySelector(`.salvaged`)
+      //Define variable for total value of closet
+      //iterate through items and write to DOM in the "closet" <tr> from table above
+      for (let i=0;i<usergetsalvagedItemsUrlJson.length; i++){
+        let itemId = usergetsalvagedItemsUrlJson[i].id
+        let item = usergetsalvagedItemsUrlJson[i].item
+        let buyDate = usergetsalvagedItemsUrlJson[i].buyDate
+        let salvageDate = usergetsalvagedItemsUrlJson[i].buyDate
+        let purchasePrice = usergetsalvagedItemsUrlJson[i].purchasePrice
+        //console.log(salvageDate)
+        salvagedTableDiv.insertAdjacentHTML(`afterend`,`
+          <td class="border-2">${item}</td>
+          <td class="border-2">$${purchasePrice}</td>
+          <td class="border-2">${buyDate}</td>
+          <td class="border-2">${salvageDate}</td>
+        `)
+      }
+      //Display total value of closet and total number of items in readable text 
     let itemSummaryDiv = document.querySelector(`.itemSummary`)
     itemSummaryDiv.insertAdjacentHTML(`afterend`,`
     <div class="flex justify-center font-bold text-4xl">
@@ -85,12 +136,14 @@ firebase.auth().onAuthStateChanged(async function(user) {
       let itemInput = document.querySelector(`#addItem`)
       let priceInput = document.querySelector(`#purchasePrice`)
       let buyDateInput = document.querySelector(`#buyDate`)
+      let collection = `myClosetItems`
       // get the input from the fields
       let itemBody = itemInput.value
       let priceBody = priceInput.value
       let buyDateBody = buyDateInput.value
       // Build the URL for our posts API
-      let url = `/.netlify/functions/addItem?userId=${userId}&item=${itemBody}&purchasePrice=${priceBody}&buyDate=${buyDateBody}`
+  
+      let url = `/.netlify/functions/addItem?userId=${userId}&item=${itemBody}&purchasePrice=${priceBody}&buyDate=${buyDateBody}&collection=${collection}`
       // Fetch the url, wait for a response, store the response in memory
       let response = await fetch(url)
       // refresh the page
@@ -118,7 +171,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       console.log(CheckedBoxesString)
 
 
-      let deleteItemsUrl = `/.netlify/functions/removeItem?itemIds=${CheckedBoxesString}`
+      let deleteItemsUrl = `/.netlify/functions/removeItem?userId=${userId}&itemIds=${CheckedBoxesString}&baseUrl=${baseUrl}`
       await fetch(deleteItemsUrl)
       // refresh the page
       location.reload()

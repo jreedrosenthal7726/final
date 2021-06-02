@@ -5,6 +5,10 @@ firebase.auth().onAuthStateChanged(async function(user) {
     console.log('signed in')
     document.querySelector(`.sign-in-or-sign-out`).innerHTML = `
     <button class="sign-out bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold">Sign Out</button><h1>Welcome ${user.providerData[0].email}</h1>
+    <form class="text-center" action="/myClosetDashboard.html">
+    <button class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold" value="Donation Centers">Take me to myCloset</button>
+    </form>
+
     `
     //refer to signout button
     let signOutButton = document.querySelector(`.sign-out`)
