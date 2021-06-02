@@ -44,9 +44,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
         <table class="border-4 border-black m-8 text-3xl text-black-500">
             <tr class="border-2">
               <th></th>
-              <th>Item</th>
+              <th>Closet Items</th>
               <th>Price</th>
-              <th>Date Purchased</th>
+              <th>Purchased</th>
             </tr>
             <tr class="border-2 border-black m-8 text-3xl text-black-500 closet">
             </tr>
@@ -94,8 +94,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
             <tr class="border-2">
               <th>Item</th>
               <th>Price</th>
-              <th>Date Purchased</th>
-              <th>Date Salvaged</th>
+              <th>Purchased</th>
+              <th>Retired</th>
             </tr>
             <tr class="border-2 border-black m-8 text-3xl text-black-500 salvaged">
             </tr>
@@ -106,6 +106,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       let salvagedTableDiv = document.querySelector(`.salvaged`)
       //Define variable for total value of closet
       //iterate through items and write to DOM in the "closet" <tr> from table above
+      //make a table for removed items (salvaged) using same method
       for (let i=0;i<usergetsalvagedItemsUrlJson.length; i++){
         let itemId = usergetsalvagedItemsUrlJson[i].id
         let item = usergetsalvagedItemsUrlJson[i].item
@@ -114,10 +115,10 @@ firebase.auth().onAuthStateChanged(async function(user) {
         let purchasePrice = usergetsalvagedItemsUrlJson[i].purchasePrice
         //console.log(salvageDate)
         salvagedTableDiv.insertAdjacentHTML(`afterend`,`
-          <td class="border-2">${item}</td>
-          <td class="border-2">$${purchasePrice}</td>
-          <td class="border-2">${buyDate}</td>
-          <td class="border-2">${salvageDate}</td>
+          <td class="border-2 text-red-500">${item}</td>
+          <td class="border-2 text-red-500">$${purchasePrice}</td>
+          <td class="border-2 text-red-500">${buyDate}</td>
+          <td class="border-2 text-red-500">${salvageDate}</td>
         `)
       }
       //Display total value of closet and total number of items in readable text 

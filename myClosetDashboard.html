@@ -42,40 +42,41 @@
         </div>
         
         <!-- Provide the framework for the dashboard by making divs with classes/id to be referenced by the .js file -->
-
-        <!-- Create a div for the item/closet table to be filled with the items from the db -->
+        <!-- Create a div for the item/closet table to be filled with the items from the db, a list of removed items, and forms -->
         <div class="MyClosetItems md:flex justify-center">
             
         <!-- create the form and button to add new items to the closet, including a name, price, and buy date -->
             <div class="QuickAddForm">
                 <form class="m-auto mt-20">
-                    <div class="border-4">
+                    <label class="block text-gray-700 text-m font-bold mb-2 text-center" for="addItem"> Quick Add</label>
+                    <div class="border-1">
                         <div>
                             <input type="text" id="addItem" class="mr-2 rounded-lg border w-full" placeholder="Item">
                         </div>
                         <div>
-                            <input type="text" id="buyDate" class="mr-2 rounded-lg border w-full" placeholder="Date Purchased">
+                            <input type="text" id="buyDate" class="mr-2 rounded-lg border w-full" placeholder="Purchase Date">
                         </div>
                         <div>
                             <input type="text" id="purchasePrice" class="mr-2 rounded-lg border w-full" placeholder="Purchase Price">
                         </div>
                     </div>
                     <div class = "m-auto">
-                        <button id="addItemButton" class="px-8 py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl font-bold w-full m-auto">Add</button>
+                        <button id="addItemButton" class="px-8 py-3 bg-green-500 mt-1 hover:bg-green-600 text-white rounded-xl font-bold w-full m-auto">Add</button>
                     </div>
                 </form>
+        <!-- create the delete button that will delete any items currently checked -->
+                <form class="DeleteItemsButton">
+                    <button id="deleteButton"class="px-8 py-3 bg-green-500 mt-1 hover:bg-green-600 text-white rounded-xl font-bold w-full m-auto">Delete</button>
+                </form>
             </div>
-
         <!-- div for the items table itself to be populated -->
         <div class="container">
             <div class="items"></div>
-
-        <!-- create the delete button that will delete any items currently checked -->
-            <form class="w-1/5 DeleteItemsButton">
-                <button id="deleteButton"class="m-12 mt-20 bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-xl font-bold">Delete</button>
-            </form>
         </div>
-            <div class="salvagedItems"></div>
+        
+        <!-- create div for table of running list of deleted items -->
+        <div class="salvagedItems"></div>
+        
         </div>
 
         <!-- create the form to search for donation centers near the users zip code -->
