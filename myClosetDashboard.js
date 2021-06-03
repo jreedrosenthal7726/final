@@ -76,7 +76,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       //Display total value of closet and total number of items in readable text 
       let itemSummaryDiv = document.querySelector(`.itemSummary`)
       itemSummaryDiv.insertAdjacentHTML(`afterend`,`
-      <div class="flex justify-center font-bold text-4xl">
+      <div class="flex justify-center font-bold text-4xl text-center">
         You have ${userItemsJson.length} items in your closet. In total, your closet is worth $${totalValue}. 
       </div>
       `)
@@ -136,8 +136,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
   
     let retiredSummaryDiv = document.querySelector(`.retiredSummary`)
     retiredSummaryDiv.insertAdjacentHTML(`afterend`,`
-    <div class="flex justify-center font-bold text-4xl">
-      You have ${usergetsalvagedItemsUrlJson.length} items retired this year valued at $${salvageValue}. 
+    <div class="flex justify-center font-bold text-4xl text-red-500 text-center">
+      You retired ${usergetsalvagedItemsUrlJson.length} items this year, valued at $${salvageValue}. 
     </div>
     `)
 
