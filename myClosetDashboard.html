@@ -38,7 +38,6 @@
         <!-- Main landing page after signing in and div for summary of items after js runs -->
         <div class="PageHeadings">
             <h1 class="text-center m-8 capitalize font-bold text-6xl text-green-500">MyCloset</h1>
-            <h2 class="itemSummary text-center m-8 font-bold text-4xl"></h2>
         </div>
         
         <!-- Provide the framework for the dashboard by making divs with classes/id to be referenced by the .js file -->
@@ -71,11 +70,15 @@
             </div>
         <!-- div for the items table itself to be populated -->
         <div class="container">
+            <h2 class="itemSummary text-center m-8 font-bold text-4xl"></h2>
             <div class="items"></div>
         </div>
         
         <!-- create div for table of running list of deleted items -->
-        <div class="salvagedItems"></div>
+        <div class="container">
+            <h2 class="retiredSummary text-center m-8 font-bold text-4xl"></h2>
+            <div class="salvagedItems"></div>
+        </div>
         
         </div>
 

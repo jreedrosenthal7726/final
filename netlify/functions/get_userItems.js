@@ -46,9 +46,9 @@ exports.handler = async function(event) {
       let itemId = items[i].id
       let buyDateTemp = new Date(itemData.buyDate.seconds * 1000)
       let buyDateString = buyDateTemp.toDateString()
-      let salvageDateTemp = new Date(itemData.buyDate.seconds * 1000)
+      let salvageDateTemp = new Date(itemData.salvageDate.seconds * 1000)
       let salvageDateString = salvageDateTemp.toDateString()
-      //console.log(dateTemp)
+      console.log(salvageDateString)
       //create item object
       let itemObject = {
         id: itemId,
@@ -60,6 +60,7 @@ exports.handler = async function(event) {
       //console.log(itemObject)
       //fill return array
       returnValue.push(itemObject)
+      console.log(itemObject)
     }
   }
 

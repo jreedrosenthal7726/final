@@ -64,7 +64,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
         let buyDate = userItemsJson[i].buyDate
         let purchasePrice = userItemsJson[i].purchasePrice
         totalValue += purchasePrice
-        //console.log(itemId)
+        console.log(itemId)
         tableDiv.insertAdjacentHTML(`afterend`,`
           <td class="border-2"><input type="checkbox" class="selectItemCheckBox" name="${itemId}">
           <td class="border-2">${item}</td>
@@ -73,9 +73,14 @@ firebase.auth().onAuthStateChanged(async function(user) {
         `)
       }
 
-
-
-
+      //Display total value of closet and total number of items in readable text 
+      let itemSummaryDiv = document.querySelector(`.itemSummary`)
+      itemSummaryDiv.insertAdjacentHTML(`afterend`,`
+      <div class="flex justify-center font-bold text-4xl">
+        You have ${userItemsJson.length} items in your closet. In total, your closet is worth $${totalValue}. 
+      </div>
+      `)
+  
 
       let getsalvagedItemsUrl = `/.netlify/functions/get_userItems?userId=${userId}&status=salvagedItems`
       //reference the items Div
@@ -107,13 +112,19 @@ firebase.auth().onAuthStateChanged(async function(user) {
       //Define variable for total value of closet
       //iterate through items and write to DOM in the "closet" <tr> from table above
       //make a table for removed items (salvaged) using same method
+      let currentDate = new Date()
+      let currentYear = currentDate.getFullYear()
+      let salvageValue = 0
       for (let i=0;i<usergetsalvagedItemsUrlJson.length; i++){
         let itemId = usergetsalvagedItemsUrlJson[i].id
         let item = usergetsalvagedItemsUrlJson[i].item
         let buyDate = usergetsalvagedItemsUrlJson[i].buyDate
-        let salvageDate = usergetsalvagedItemsUrlJson[i].buyDate
+        let salvageDate = usergetsalvagedItemsUrlJson[i].salvageDate
         let purchasePrice = usergetsalvagedItemsUrlJson[i].purchasePrice
-        //console.log(salvageDate)
+        let salvageYear = new Date(salvageDate).getFullYear()
+        if (currentYear==salvageYear){
+          salvageValue += purchasePrice
+        }
         salvagedTableDiv.insertAdjacentHTML(`afterend`,`
           <td class="border-2 text-red-500">${item}</td>
           <td class="border-2 text-red-500">$${purchasePrice}</td>
@@ -121,11 +132,12 @@ firebase.auth().onAuthStateChanged(async function(user) {
           <td class="border-2 text-red-500">${salvageDate}</td>
         `)
       }
-      //Display total value of closet and total number of items in readable text 
-    let itemSummaryDiv = document.querySelector(`.itemSummary`)
-    itemSummaryDiv.insertAdjacentHTML(`afterend`,`
+    
+  
+    let retiredSummaryDiv = document.querySelector(`.retiredSummary`)
+    retiredSummaryDiv.insertAdjacentHTML(`afterend`,`
     <div class="flex justify-center font-bold text-4xl">
-      You have ${userItemsJson.length} items in your closet. In total, your closet is worth $${totalValue}. 
+      You have ${usergetsalvagedItemsUrlJson.length} items retired this year valued at $${salvageValue}. 
     </div>
     `)
 

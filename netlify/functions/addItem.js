@@ -27,7 +27,7 @@ exports.handler = async function(event) {
   if (collection == 'myClosetSalvagedItems') {
     let salvageDate = new Date()
     buyDate = new Date(buyDate * 1000)
-    console.log(buyDate)
+    //console.log(salvageDate)
     await db.collection(collection).add({
       userId: userId,
       item: item,
