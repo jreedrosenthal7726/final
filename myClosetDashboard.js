@@ -40,18 +40,18 @@ firebase.auth().onAuthStateChanged(async function(user) {
       //console.log(userItemsJson.length)
 
       //add the heading for the "closet contents table" to the items div, include a class in the table for later reference called "closet"
-      itemsDiv.insertAdjacentHTML(`beforeend`,`
-        <table class="border-4 border-black m-8 text-3xl text-black-500">
-            <tr class="border-2">
-              <th></th>
-              <th>Closet Items</th>
-              <th>Price</th>
-              <th>Purchased</th>
-            </tr>
-            <tr class="border-2 border-black m-8 text-3xl text-black-500 closet">
-            </tr>
-        </table>
-      `)
+      // itemsDiv.insertAdjacentHTML(`beforeend`,`
+      //   <table class="border-4 border-black m-8 text-3xl text-black-500">
+      //       <tr class="border-2">
+      //         <th></th>
+      //         <th>Closet Items</th>
+      //         <th>Price</th>
+      //         <th>Purchased</th>
+      //       </tr>
+      //       <tr class="border-2 border-black m-8 text-3xl text-black-500 closet">
+      //       </tr>
+      //   </table>
+      // `)
 
       //grab reference to the table row in the items table to add db items to in the next loop step
       let tableDiv = document.querySelector(`.closet`)
@@ -75,10 +75,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
       //Display total value of closet and total number of items in readable text 
       let itemSummaryDiv = document.querySelector(`.itemSummary`)
-      itemSummaryDiv.insertAdjacentHTML(`afterend`,`
-      <div class="flex justify-center font-bold text-4xl text-center">
+      itemSummaryDiv.insertAdjacentHTML(`afterbegin`,`
         You have ${userItemsJson.length} items in your closet. In total, your closet is worth $${totalValue}. 
-      </div>
       `)
   
 
@@ -94,18 +92,18 @@ firebase.auth().onAuthStateChanged(async function(user) {
         let usergetsalvagedItemsUrlResponse = await fetch(getsalvagedItemsUrl)
         let usergetsalvagedItemsUrlJson = await usergetsalvagedItemsUrlResponse.json()
   
-        salvagedItemsDiv.insertAdjacentHTML(`beforeend`,`
-        <table class="border-4 border-black m-8 text-3xl text-black-500">
-            <tr class="border-2">
-              <th>Item</th>
-              <th>Price</th>
-              <th>Purchased</th>
-              <th>Retired</th>
-            </tr>
-            <tr class="border-2 border-black m-8 text-3xl text-black-500 salvaged">
-            </tr>
-        </table>
-      `)
+      //   salvagedItemsDiv.insertAdjacentHTML(`beforeend`,`
+      //   <table class="border-4 border-black m-8 text-3xl text-black-500">
+      //       <tr class="border-2">
+      //         <th>Item</th>
+      //         <th>Price</th>
+      //         <th>Purchased</th>
+      //         <th>Retired</th>
+      //       </tr>
+      //       <tr class="border-2 border-black m-8 text-3xl text-black-500 salvaged">
+      //       </tr>
+      //   </table>
+      // `)
 
       //grab reference to the table row in the items table to add db items to in the next loop step
       let salvagedTableDiv = document.querySelector(`.salvaged`)
@@ -135,10 +133,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
     
   
     let retiredSummaryDiv = document.querySelector(`.retiredSummary`)
-    retiredSummaryDiv.insertAdjacentHTML(`afterend`,`
-    <div class="flex justify-center font-bold text-4xl text-red-500 text-center">
+    retiredSummaryDiv.insertAdjacentHTML(`afterbegin`,`
       You retired ${usergetsalvagedItemsUrlJson.length} items this year, valued at $${salvageValue}. 
-    </div>
     `)
 
     //get reference to button to add items

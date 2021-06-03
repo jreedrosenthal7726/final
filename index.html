@@ -17,7 +17,7 @@
 
     <div class="sign-in-or-sign-out"></div>
 
-  
+  <div class="scripts">
     <!-- Put the Firebase config here -->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
@@ -41,7 +41,7 @@
       firebase.initializeApp(firebaseConfig);
     </script>
     <script src="index.js"></script>
-
+  </div>
 
     <!-- Main landing page for sign ins -->
     <h1 class="text-center m-8 capitalize font-bold text-6xl text-green-500">MyCloset</h1>
@@ -51,12 +51,7 @@
 
 
     <!-- Placeholder for log-in form and sign-in button-->
-    <div></div>
-    <div></div>
-    <div></div>
     <h1 class="text-center m-8 capitalize firebaseui-auth-container"></h1>
-
-
   </div>
 
   <!-- decorative image -->
@@ -70,15 +65,14 @@
     </ul>
 
   <!-- Allow an address search for a donation drop off location nearby -->
-        <!-- <div class="zip"> -->
-        <div class="zip">
-          <form class="text-center" action="https://www.google.com/maps?" target="_blank">
-          <!-- button to click to open google maps search of donation centers-->
-          <input class="p-2 w-64 border border-gray-400 text-center rounded text-grey-400 focus:outline-none focus:ring-green-500
-          focus:border-green-500" type="hidden" id="q" name="q" value="Donation Centers">
-          <button class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold" value="Donation Centers">Find Donation Centers Near Me</button>
-          </form>
-      </div>
+    <!-- <div class="zip"> -->
+    <div class="zip">
+      <form class="text-center" action="https://www.google.com/maps?" target="_blank">
+      <!-- button to click to open google maps search of donation centers-->
+      <input class="p-2 w-64 border border-gray-400 text-center rounded text-grey-400 focus:outline-none focus:ring-green-500
+      focus:border-green-500" type="hidden" id="q" name="q" value="Donation Centers">
+      <button class="bg-green-500 md:w-1/8 hover:bg-green-600 text-white px-3 py-3 rounded-xl font-bold" value="Donation Centers">Find Donation Centers Near Me</button>
+      </form>
   </div>
 </body>
 
